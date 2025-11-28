@@ -1,0 +1,267 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.content-section {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.photo-column {
+  flex: 1;
+  max-width: 500px;
+}
+
+.info-column {
+  flex: 1;
+  max-width: 500px;
+}
+
+.about-me {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  animation: fadeInRight 2s ease-in-out;
+  animation-fill-mode: both; /* сохраняет конечное состояние */
+}
+.about-me h3 {
+  font-family: "Triodion", system-ui;
+  font-size: 2.5rem;
+  color: #d63384;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.about-me p {
+  font-family: "Caveat", cursive;
+  font-size: 1.5rem;
+  color: #555;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+.love-text {
+  font-family: "Caveat", cursive;
+  font-size: 1.8rem;
+  color: #e83e8c;
+  text-align: center;
+  margin: 20px 0 15px 0px;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.about-me ul {
+  list-style: none;
+  padding: 0;
+}
+.about-me li {
+  font-family: "Caveat", cursive;
+  font-size: 1.8rem;
+  color: #666;
+  margin-bottom: 10px;
+  padding-left: 10px;
+}
+.about-me li:hover {
+  color: #e83e8c; /* Розовый при наведении */
+}
+
+/* анимация для текста справа */
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px) scale(0.95); /* Меньше смещение + масштаб */
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  text-align: center;
+  padding: 20px;
+}
+
+/* Верхняя надпись */
+.name-top h2 {
+  font-family: "Triodion", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 4rem;
+  color: #e83e8c;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  animation: fadeInDown 1.5s ease-in-out;
+}
+/* Анимация для текста */
+.name-top h2 {
+  animation: fadeIn 3s ease-in;
+  animation-fill-mode: both;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Фото */
+.main-photo {
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+  border: 8px solid white;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  transform-origin: center;
+  transition: all 0.8s ease;
+  animation: float 3s ease-in-out infinite;
+}
+.main-photo:hover {
+  animation: explodeSpin 0.8s ease-in-out;
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(2deg);
+  }
+}
+@keyframes explodeSpin {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.1) rotate(180deg);
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+  }
+}
+.photo-column {
+  position: relative;
+  display: inline-block;
+}
+.photo-column::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 50%;
+  background: #e83e8c;
+  z-index: -1;
+}
+.main-photo.exploding {
+  opacity: 0;
+  transform: scale(0.1) rotate(360deg);
+  filter: blur(10px);
+}
+.particle {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #e83e8c;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: particleFly 1s ease-out forwards;
+}
+@keyframes particleFly {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--tx), var(--ty)) scale(0);
+    opacity: 0;
+  }
+}
+
+/* Нижняя кнкопка */
+.name-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 40px;
+}
+.gallery-btn {
+  background: #e83e8c;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 25px;
+  font-family: "Caveat", cursive;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(232, 62, 140, 0.3);
+}
+
+@media (max-width: 768px) {
+  .content-section {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .photo-column {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+  }
+  .photo-column::after {
+    clip-path: path(
+      "M140,50 C180,30 220,30 250,50 C280,70 260,140 230,190 C200,230 140,260 140,260 C140,260 80,230 50,190 C20,140 0,70 30,50 C60,30 100,30 140,50 Z"
+    );
+    /* clip-path: circle(35%); */
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+  }
+
+  .main-photo {
+    width: 280px;
+    height: 280px;
+    /* clip-path: circle(35%); */
+    clip-path: path(
+      "M140,50 C180,30 220,30 250,50 C280,70 260,140 230,190 C200,230 140,260 140,260 C140,260 80,230 50,190 C20,140 0,70 30,50 C60,30 100,30 140,50 Z"
+    );
+  }
+
+  .name-top h2 {
+    font-size: 2.5rem;
+  }
+}
